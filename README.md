@@ -18,7 +18,7 @@
 
 ## Description
 
-Le-Inventory is an inventory system, custom made for the HW team.
+Le-Inventory is an inventory system, custom-made for the HW team.
 It's used to optimize hardwaristi's job.
 
 ---

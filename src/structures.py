@@ -3,54 +3,117 @@ __version__ = "01.01"
 __date__ = "2023-03-16"
 
 
-class Component():    
+class Component():
+    """
+    Class used to represent a component
+
+    ...
+
+    Attributes
+    ----------
+    id : int
+        component id
+    PN : str
+        part number
+    location : str
+        location in the warehouse
+    package : str
+        package type
+    stock : int
+        number of components in stock
+    reserved : int
+        number of components reserved for projects
+    price : int
+        price of one component
+    
+    Methods
+    -------
+    get_available()
+        Returns the number of available components
+    """    
     id : int
     PN : str
     location : str
     package : str
     stock : int
     reserved : int
-    cost : int
+    price : int
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, cost):
+    def __init__(self, id, PN, location, package, stock, reserved, price):
         self.id = id
         self.PN = PN
         self.location = location
         self.package = package
         self.stock = stock
         self.reserved = reserved
-        self.cost = cost
+        self.price = price
 
     
-    def get_available(self):        
+    def get_available(self):
+        """
+        Returns the number of available components
+
+        Returns
+        -------
+        int
+            number of available components
+        """  
         return self.stock - self.reserved
 
 
 class Resistor(Component):
-    """Resistor class"""
-    value : float # resistance
+    """
+    Class used to represent a resistor
+
+    ...
+
+    Attributes
+    ----------
+    value : float
+        resistance
+    tolerance : float
+        tolerance
+    power : float
+        power
+    """
+    value : float
     tolerance : float
     power : float
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, cost, value, tolerance, power):
-        super().__init__(id, PN, location, package, stock, reserved, cost)
+    def __init__(self, id, PN, location, package, stock, reserved, price, value, tolerance, power):
+        super().__init__(id, PN, location, package, stock, reserved, price)
         self.value = value
         self.tolerance = tolerance
         self.power = power
 
 
 class Capacitor(Component):
-    """Capacitor class"""
-    value : float # capacitance
+    """
+    Class used to represent a capacitor
+
+    ...
+
+    Attributes
+    ----------
+    value : float
+        capacitance
+    tolerance : float
+        tolerance
+    dielectric : str
+        dielectric type
+    maxVoltage : int
+        maximum voltage
+    """
+    value : float
     tolerance : float
     dielectric : str
     maxVoltage : int
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, cost, value, tolerance, dielectric, maxVoltage):
-        super().__init__(id, PN, location, package, stock, reserved, cost)
+    def __init__(self, id, PN, location, package, stock, reserved, price, value, tolerance, dielectric, maxVoltage):
+        super().__init__(id, PN, location, package, stock, reserved, price)
         self.value = value
         self.tolerance = tolerance
         self.dielectric = dielectric
@@ -58,16 +121,33 @@ class Capacitor(Component):
 
 
 class Diode(Component):
-    """Diode class"""
+    """
+    Class used to represent a diode
+
+    ...
+
+    Attributes
+    ----------
     type : str
-    value : float # forward voltage
+        diode type
+    value : float
+        forward voltage
+    power : float
+        power
+    forwardVoltage : float
+        forward voltage
+    breakdownVoltage : float
+        breakdown voltage
+    """
+    type : str
+    value : float
     power : float
     forwardVoltage : float
     breakdownVoltage : float
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, cost, type, value, power, forwardVoltage, breakdownVoltage):
-        super().__init__(id, PN, location, package, stock, reserved, cost)
+    def __init__(self, id, PN, location, package, stock, reserved, price, type, value, power, forwardVoltage, breakdownVoltage):
+        super().__init__(id, PN, location, package, stock, reserved, price)
         self.type = type
         self.value = value
         self.power = power
@@ -76,7 +156,29 @@ class Diode(Component):
 
 
 class Project():
-    """Project class"""
+    """
+    Class used to represent a project
+
+    ...
+
+    Attributes
+    ----------
+    name : str
+        project name
+    version : str
+        project version
+    date : str
+        project date
+    resistors : list[Resistor]
+        list of resistors used in the project
+    projectPath : str
+        path to the project
+
+    Methods
+    -------
+    get_id()
+        Returns the project id
+    """
     name : str
     version : str
     date : str
@@ -85,10 +187,26 @@ class Project():
 
 
     def __init__(self, name, version, date):
+        """
+        Constructor for the Project class
+
+        Args:
+            name (str): project name
+            version (str): project version
+            date (str): project date
+        """
         self.name = name
         self.version = version
         self.date = date
 
     
     def get_id(self):
+        """
+        Returns the project id
+
+        Returns
+        -------
+        str
+            project id
+        """        
         return f"{self.name}_{self.date}_{self.version.replace('.', '-')}"
