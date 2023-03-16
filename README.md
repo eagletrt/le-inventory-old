@@ -1,5 +1,7 @@
 # 𝓛𝓮-inventory
 
+![Logo](docs/le-inventory.png)
+
 ![Tags](https://badgen.net/badge/icon/%23LeInventory%20%23py/14406F1?icon=https://icons.getbootstrap.com/assets/icons/bookmarks-fill.svg&label&labelColor=FFF)
 ![ProjectName](https://badgen.net/badge/Project%20Name/Le-Inventory/0058E7?labelColor=000) ![Version](https://badgen.net/badge/Version/01.01/cyan?labelColor=000) ![Authors](https://badgen.net/badge/Authors/CPR%20Ninis%20Alescs/60C?labelColor=000)
 
