@@ -3,7 +3,7 @@ __version__ = "01.01"
 __date__ = "2023-03-16"
 
 
-class Component():
+class Component():    
     id : int
     PN : str
     location : str
@@ -22,8 +22,13 @@ class Component():
         self.reserved = reserved
         self.cost = cost
 
+    
+    def get_available(self):        
+        return self.stock - self.reserved
+
 
 class Resistor(Component):
+    """Resistor class"""
     value : float # resistance
     tolerance : float
     power : float
@@ -37,6 +42,7 @@ class Resistor(Component):
 
 
 class Capacitor(Component):
+    """Capacitor class"""
     value : float # capacitance
     tolerance : float
     dielectric : str
@@ -52,6 +58,7 @@ class Capacitor(Component):
 
 
 class Diode(Component):
+    """Diode class"""
     type : str
     value : float # forward voltage
     power : float
@@ -69,6 +76,7 @@ class Diode(Component):
 
 
 class Project():
+    """Project class"""
     name : str
     version : str
     date : str
