@@ -77,8 +77,8 @@ path/to/le-inventory>python3 src/main.py -i input -o resistors -t Resistor -v
 
 Starting program...
 Initializing variables...
-Input file: input
-Output file: resistors
+Input file: input.csv
+Output file: resistors.csv
 Objects type: Resistor
 
 Reading csv file data/input.csv...

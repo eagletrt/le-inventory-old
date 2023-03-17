@@ -125,7 +125,7 @@ def __init__():
 
     if VERBOSE:
         print(f"Starting program...\nInitializing variables...")
-        print(f"Input file: {args.filein}\nOutput file: {args.fileout}\nObjects type: {args.type}\n")
+        print(f"Input file: {args.filein}.csv\nOutput file: {args.fileout}.csv\nObjects type: {args.type}\n")
 
     resistors_df = add_from_csv(f"data/{fin}.csv", f"{obj_type}")
 
