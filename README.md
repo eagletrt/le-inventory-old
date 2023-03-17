@@ -45,9 +45,52 @@ It's used to optimize hardwaristi's job.
 ---
 
 ## Execution examples
+
+![CLI](https://badgen.net/badge/icon/CLI/B67DFF?icon=terminal&label&labelColor=000)
 ```bash
-	TBD
+# syntax
+path/to/le-inventory>py src/main.py [-h] [-i FILEIN] [-o FILEOUT] [-t {Resistor,Capacitor,Diode,Project} [-v]
+
+# example
+
+# 0 - help menu
+python3 src/main.py -h
+usage: le-inventory/src/main.py [-h] [-i FILEIN] [-o FILEOUT] [-t {Resistor,Capacitor,Diode,Project}] [-v]
+
+A program to manage the stock of electronic components
+
+options:
+  -h, --help            show this help message and exit
+  -i FILEIN, --filein FILEIN
+                        input file
+  -o FILEOUT, --fileout FILEOUT
+                        output file
+  -t {Resistor,Capacitor,Diode,Project}, --type {Resistor,Capacitor,Diode,Project}
+                        type of the objects to add
+  -v, --verbose         increase output verbosity
+
+# 1 - non-verbose
+path/to/le-inventory>python3 src/main.py -i input -o - Capacitors
+
+# 2 - verbose
+path/to/le-inventory>python3 src/main.py -i input -o resistors -t Resistor -v
+
+Starting program...
+Initializing variables...
+Input file: input
+Output file: resistors
+Objects type: Resistor
+
+Reading csv file data/input.csv...
+Creating objects...
+Adding object(s) to the dataframe...
+Adding object(s) to the dataframe...
+Done adding objects to the dataframe!
+
+Serializing data to csv file: data/resistors.csv...
+Execution was successful!
 ```
+
 ---
 
 Made with ♡ by [![CPR](https://badgen.net/badge/icon/CPR/B67DFF?icon=github&label&labelColor=000)](https://github.com/chiarasabaini) [![Ninis](https://badgen.net/badge/icon/Ninis/B67DFF?icon=github&label&labelColor=000)](https://github.com/thomasnonis) [![Alescs](https://badgen.net/badge/icon/Alescs/B67DFF?icon=github&label&labelColor=000)](https://github.com/Alescs)
