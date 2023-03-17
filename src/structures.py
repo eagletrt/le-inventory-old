@@ -2,7 +2,9 @@ __authors__ = "CPR, Ninis, Alescs"
 __version__ = "01.01"
 __date__ = "2023-03-16"
 
+from dataclasses import dataclass
 
+@dataclass
 class Component():
     """
     Class used to represent a component
@@ -40,16 +42,6 @@ class Component():
     price : int
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, price):
-        self.id = id
-        self.PN = PN
-        self.location = location
-        self.package = package
-        self.stock = stock
-        self.reserved = reserved
-        self.price = price
-
-    
     def get_available(self):
         """
         Returns the number of available components
@@ -60,8 +52,10 @@ class Component():
             number of available components
         """  
         return self.stock - self.reserved
+    
 
 
+@dataclass
 class Resistor(Component):
     """
     Class used to represent a resistor
@@ -80,15 +74,9 @@ class Resistor(Component):
     value : float
     tolerance : float
     power : float
+    
 
-
-    def __init__(self, id, PN, location, package, stock, reserved, price, value, tolerance, power):
-        super().__init__(id, PN, location, package, stock, reserved, price)
-        self.value = value
-        self.tolerance = tolerance
-        self.power = power
-
-
+@dataclass
 class Capacitor(Component):
     """
     Class used to represent a capacitor
@@ -112,14 +100,7 @@ class Capacitor(Component):
     maxVoltage : int
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, price, value, tolerance, dielectric, maxVoltage):
-        super().__init__(id, PN, location, package, stock, reserved, price)
-        self.value = value
-        self.tolerance = tolerance
-        self.dielectric = dielectric
-        self.maxVoltage = maxVoltage
-
-
+@dataclass
 class Diode(Component):
     """
     Class used to represent a diode
@@ -146,15 +127,7 @@ class Diode(Component):
     breakdownVoltage : float
 
 
-    def __init__(self, id, PN, location, package, stock, reserved, price, type, value, power, forwardVoltage, breakdownVoltage):
-        super().__init__(id, PN, location, package, stock, reserved, price)
-        self.type = type
-        self.value = value
-        self.power = power
-        self.forwardVoltage = forwardVoltage
-        self.breakdownVoltage = breakdownVoltage
-
-
+@dataclass
 class Project():
     """
     Class used to represent a project
@@ -169,11 +142,16 @@ class Project():
         project version
     date : str
         project date
-    resistors : list[Resistor]
-        list of resistors used in the project
     projectPath : str
         path to the project
-
+    resistors : list[(Resistor, int)]
+        list of tuples, composed of the id of the resistors used in the project and the quantity
+    capacitors : list[(Capacitor, int)]
+        list of tuples, composed of the id of the capacitors used in the project and the quantity
+    diodes : list[(Diode, int)]
+        list of tuples, composed of the id of the diodes used in the project and the quantity
+    
+        
     Methods
     -------
     get_id()
@@ -182,24 +160,12 @@ class Project():
     name : str
     version : str
     date : str
-    resistors : list[Resistor]
     projectPath : str
+    resistors : list[(Resistor, int)]
+    capacitors : list[(Capacitor, int)]
+    diodes : list[(Diode, int)]
 
 
-    def __init__(self, name, version, date):
-        """
-        Constructor for the Project class
-
-        Args:
-            name (str): project name
-            version (str): project version
-            date (str): project date
-        """
-        self.name = name
-        self.version = version
-        self.date = date
-
-    
     def get_id(self):
         """
         Returns the project id
