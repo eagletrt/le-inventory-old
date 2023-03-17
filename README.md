@@ -33,7 +33,10 @@ It's used to optimize hardwaristi's job.
 
 	- docs
 		- CHANGELOG.txt
+	- requirements
+		- requirements.txt
 	- src
+		- main.py
 		- structures.py
 
 	- .gitignore
