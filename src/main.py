@@ -136,7 +136,7 @@ def __init__():
         path_out = f"data/{fout}.csv" # TODO: handle project type [filename must be the project's id, retrieved using Project.get_id()]
     else:
         path_out = f"data/{fout}.csv"
-    resistors_df.to_csv(path_out, index=False)
+    resistors_df.to_csv(path_out, mode='a', index=False, header=False)
     
     if VERBOSE:
         print("Execution was successful!")
